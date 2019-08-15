@@ -1,0 +1,125 @@
+<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <h1 class="title is-4">Freelancer</h1>
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <div class="navbar-item">
+                    <div class="field has-addons">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Find services">
+                        </div>
+                        <div class="control">
+                            <a class="button is-danger">Search</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <%= link_to "Post Gig", new_gig_path, class: "navbar-item" %>
+                <a class="navbar-item">Browse Gigs</a>
+
+                <% if (!user_signed_in?) %>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <%= link_to 'Sign Up', new_user_registration_path, class: "button is-primary" %>
+                            <%= link_to 'Log In', new_user_session_path, class: "button is-light" %>
+                        </div>
+                    </div>
+                <% else %>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            <figure class="image is-24x24 m-r-5">
+                                <%= image_tag avatar_url(current_user), class: "is-rounded" %>
+                            </figure>
+                            <%= current_user.full_name %>
+                        </a>
+
+                        <div class="navbar-dropdown">
+                            <%= link_to 'Profile', edit_user_registration_path, class: "navbar-item" %>
+                            <%= link_to 'Dashboard', dashboard_path, class: "navbar-item" %>
+                            <hr class="navbar-divider">
+                            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "navbar-item" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<% if (user_signed_in?) && !current_page?(root_path) && !current_page?("/gigs/#{params[:id]}") && !current_page?("/users/#{params[:id]}") %>
+    <nav class="navbar has-shadow" style="z-index: 5">
+        <div class="container">
+            <div class="navbar">
+                <%= link_to 'Dashboard', dashboard_path, class: 'navbar-item' %>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Selling</a>
+                    <div class="navbar-dropdown">
+                        <%= link_to "Create new Gig", new_gig_path, class: "navbar-item" %>
+                    </div>
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Buying</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">Post Request</a>
+                        <a class="navbar-item">Manage Requests</a>
+                    </div>
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Buyer Request</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">Actives Requests</a>
+                        <a class="navbar-item">Offers Sent</a>
+                    </div>
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Orders</a>
+                    <div class="navbar-dropdown">
+                        <%= link_to 'Selling Orders', selling_orders_path, class: "navbar-item" %>
+                        <%= link_to 'Buying Orders', buying_orders_path, class: "navbar-item" %>
+                    </div>
+                </div>
+
+                <%= link_to 'Earnings', dashboard_path, class: 'navbar-item' %>
+                <%= link_to 'Messages', dashboard_path, class: 'navbar-item' %>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Settings</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">Payment Method</a>
+                        <a class="navbar-item">Payout Method</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<% end %>
+
+<script>
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+});
+</script>
