@@ -28,7 +28,7 @@
                         <td><%= o.due_date.strftime('%d %b %Y') %></td>
                         <td><%= o.amount %></td>
                         <td>
-                            <span class="tag <%= 'is-warning' if o.inprogress? %> <%= 'is-success' if o.completed? %>">
+                            <span class="tag <%= 'is-warning' if o.inprogress? %> <%= 'is-success' if o.complete? %>">
                                 <%= o.status.capitalize %>
                             </span>
                         </td>
