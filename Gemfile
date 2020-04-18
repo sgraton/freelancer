@@ -24,6 +24,11 @@ gem 'kaminari'
 
 gem 'stripe', '=4.18.1'
 
+gem 'trestle'
+gem 'trestle-auth'
+gem 'trestle-search'
+gem 'trestle-tinymce'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
