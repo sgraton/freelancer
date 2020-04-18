@@ -6,12 +6,14 @@ class OrdersController < ApplicationController
         pricing = gig.pricings.find_by(pricing_type: params[:pricing_type])
 
         if (pricing && !gig.has_single_pricing) || (pricing && pricing.basic? && gig.has_single_pricing)
-            charge(gig, pricing)
+            if charge(gig, pricing)
+                return redirect_to buying_orders_path
+            end
         else
             flash[:alert] = 'Price is incorrect.'
         end
 
-        redirect_to request.referrer
+        return redirect_to request.referrer
     end
 
     def selling_orders
@@ -32,7 +34,7 @@ class OrdersController < ApplicationController
                 flash[:alert] = "Something went wrong."
             end
 
-            redirect_to request.referrer
+            redirect_to buying_orders_path
         end
     end
 
@@ -46,12 +48,62 @@ class OrdersController < ApplicationController
         order.seller_name = gig.user.full_name
         order.buyer_id = current_user.id
         order.buyer_name = current_user.full_name
-        order.amount = pricing.price
+        order.amount = pricing.price * 1.1
 
-        if order.save
-            flash[:notice] = "Your order created successfully."
+        amount = pricing.price * 1.1
+
+        if params[:payment].blank?
+            flash[:alert] = "No payment selected"
+            return false
+        elsif params[:payment] == "system"
+            if amount > current_user.wallet
+                flash[:alert] = "Not enough money"
+                return false
+            else
+                ActiveRecord::Base.transaction do 
+                    current_user.update!(wallet: current_user.wallet - amount)
+                    gig.user.update!(wallet: gig.user.wallet + pricing.price)
+                    Transaction.create! status: Transaction.statuses[:approved],
+                                        transaction_type: Transaction.transaction_types[:trans],
+                                        source_type: Transaction.source_types[:system],
+                                        buyer: current_user,
+                                        seller: gig.user,
+                                        amount: amount, 
+                                        gig: gig
+                    order.save
+                end
+                flash[:notice] = "You order is created successfully"
+                return true
+            end
         else
-            flash[:alert] = order.errors.full_messages.join(', ')
+            charge = Stripe::Charge.create({
+                amount: (amount * 100).to_i,
+                currency: 'usd',
+                customer: current_user.stripe_id,
+                source: params[:payment]
+            })
+
+            if charge.paid
+                ActiveRecord::Base.transaction do 
+                    gig.user.update!(wallet: gig.user.wallet + pricing.price)
+                    Transaction.create! status: Transaction.statuses[:approved],
+                                        transaction_type: Transaction.transaction_types[:trans],
+                                        source_type: Transaction.source_types[:stripe],
+                                        buyer: current_user,
+                                        seller: gig.user,
+                                        amount: amount, 
+                                        gig: gig
+                    order.save
+                end
+                flash[:notice] = "You order is created successfully"
+                return true
+            end
+            flash[:alert] = "Invalid card"
+            return false
         end
+
+    rescue ActiveRecord::RecordInvalid
+        flash[:alert] = "Something went wrongx"
+        return false
     end
 end
