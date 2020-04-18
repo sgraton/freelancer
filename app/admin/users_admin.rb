@@ -14,6 +14,7 @@ Trestle.resource(:users) do
     column :stripe_id
     column :created_at, align: :center
     actions do |toolbar, instance, admin|
+      toolbar.link 'Wallet', admin.path(:wallet, id: instance.id), style: :warning
       toolbar.link 'Activate', admin.path(:activate, id: instance.id), method: :post, style: :success
       toolbar.link 'Deactivate', admin.path(:deactivate, id: instance.id), method: :post, style: :danger
     end
@@ -35,9 +36,41 @@ Trestle.resource(:users) do
       flash[:message] = "User is deactivated"
       redirect_to admin.path(:show, id: user)
     end
+
+    def wallet
+      @user = admin.find_instance(params)
+      @net_income = (Transaction.where("seller_id = ?", @user.id).sum(:amount) / 1.1).round(2)
+
+      @withdrawn = Transaction.where("buyer_id = ? AND status = ? and transaction_type = ?", 
+                      @user.id, 
+                      Transaction.statuses[:approved],
+                      Transaction.transaction_types[:withdraw]
+                    ).sum(:amount)
+
+      @pending = Transaction.where("buyer_id = ? AND status = ? and transaction_type = ?", 
+                  @user.id, 
+                  Transaction.statuses[:pending],
+                  Transaction.transaction_types[:withdraw]
+                ).sum(:amount)
+
+      @purchased = Transaction.where("buyer_id = ? AND source_type = ? and transaction_type = ?", 
+                    @user.id, 
+                    Transaction.source_types[:system],
+                    Transaction.transaction_types[:trans]
+                  ).sum(:amount)
+
+      @withdrawable = @user.wallet
+
+      @transactions = Transaction.where("seller_id = ? OR (buyer_id = ? AND source_type = ?)", 
+                        @user.id,
+                        @user.id,
+                        Transaction.source_types[:system]
+                      ).page(params[:page])
+    end
   end
 
   routes do
+    get :wallet, on: :member
     post :activate, on: :member
     post :deactivate, on: :member
   end

@@ -61,4 +61,14 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+      login: "sb-n7eos1493667_api1.business.example.com",
+      password: "MV4QE36AKATU7D2N",
+      signature: "ArJ1rQKsnrqFuRe2DFB41QY8zWtuAmMmjbe.BWsfqKUC9LR74qn9GP32"
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
 end
