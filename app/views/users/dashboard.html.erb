@@ -84,8 +84,27 @@
                                             <%= f.submit "Save", class: "button is-danger" %>
                                         <% end %>
                                     </div>
-                                </article>
+                                </article>                       
+                                <hr class="h-10">
 
+                                <!-- Subscription -->
+                                <% if @subscription.present? %>
+                                    <article >
+                                        <div class="media">
+                                            <div class="media-content">Subscription</div>
+                                            <div class="media-right">
+                                                <strong><% if @plan %> <%= @plan.nickname %> <% end %></strong> <i class="toggle far fa-edit" aria-controls="user-subscription"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="content">
+                                            <%= form_with url: remove_subscription_path, method: :delete, html: {id: 'user-subscription', class: 'is-hidden'} do |f| %>
+                                                <small>Expire at : <%= @subscription.expired_at %> </small>
+                                                <%= f.submit "Cancel My Subscription", class: "button is-danger is-fullwidth m-t-20" %>
+                                            <% end %>
+                                        </div>
+                                    </article>
+                                <% end %>
                             </div>
                         </div>
                     </div>

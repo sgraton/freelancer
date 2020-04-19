@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def dashboard
+  def dashboard 
+    @subscription = Subsription.find_by_user_id(current_user.id)
+    if @subscription.present?
+      @plan = Stripe::Plan.retrieve(@subscription.plan_id)
+    end
   end
 
   def show
@@ -111,6 +115,16 @@ class UsersController < ApplicationController
     end
 
     redirect_to request.referrer
+  end
+
+  def remove_subscription
+    @subscription = Subsription.find_by_user_id(current_user.id)
+
+    if @subscription.present? && @subscription.sub_id
+      Stripe::Subscription.delete(@subscription.sub_id)
+      return redirect_to request.referrer, notice: "Your subscription is cancelled"
+    end
+    return redirect_to request.referrer, alert: "Cannot cancel your subscription"
   end
 
   private
