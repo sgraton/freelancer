@@ -72,7 +72,7 @@ $sides: (top, bottom, left, right);
 }
 
 .has-bg-img {
-  background: url('home/background.jpg') center center;
+  background: asset-url('home/background.jpg') center center;
   background-size: cover;
 }
 
