@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
 
     def subscribe
         if !current_user.stripe_id
-            return redirect_to edit_payment_path, alert: "Please add your card before subscribing"
+            return redirect_to update_payment_path, alert: "Please add your card before subscribing"
         end
 
         plan = Stripe::Plan.retrieve(params[:plan_id])
