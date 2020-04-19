@@ -59,4 +59,19 @@ class PagesController < ApplicationController
           .page(params[:page])
           .per(6)
   end
+
+  def calendar
+    params[:start_date] ||= Date.current.to_s
+
+    start_date = Date.parse(params[:start_date])
+    first_of_month = (start_date - 1.month).beginning_of_month
+    end_of_month = (start_date + 1.month).end_of_month
+
+    @orders = Order.where("seller_id = ? and status = ? and due_date between ? and ?",
+                            current_user.id, 
+                            Order.statuses[:inprogress],
+                            first_of_month, 
+                            end_of_month
+                          )
+  end
 end

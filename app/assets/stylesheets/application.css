@@ -20,4 +20,7 @@
  *= require dropzone/dist/basic.css
  *= require dropzone/dist/dropzone.css
  *= require raty-js/lib/jquery.raty
+ *= require @fullcalendar/core/main.css
+ *= require @fullcalendar/daygrid/main.css
+ *= require @fullcalendar/list/main.css
  */
