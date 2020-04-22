@@ -8,7 +8,7 @@ class GigsController < ApplicationController
 
   def new
     @gig = current_user.gigs.build
-    @categories = Category.all
+    @categories = Category.where(active: true)
   end
 
   def create
@@ -23,7 +23,7 @@ class GigsController < ApplicationController
   end
 
   def edit
-    @categories = Category.all
+    @categories = Category.where(active: true)
     
   end
 
@@ -83,7 +83,7 @@ class GigsController < ApplicationController
   end
 
   def show
-    @categories = Category.all
+    @categories = Category.where(active: true)
   end
 
   def upload_photo

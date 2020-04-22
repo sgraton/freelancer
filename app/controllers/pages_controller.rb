@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   end
 
   def search
-    @categories = Category.all
+    @categories = Category.where(active: true)
     @category = Category.find(params[:category]) if params[:category].present?
 
     query_condition = []

@@ -61,7 +61,7 @@ class RequestsController < ApplicationController
   private
 
   def set_categories
-    @categories = Category.all
+    @categories = Category.where(active: true)
   end
 
   def set_request
