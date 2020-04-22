@@ -22,7 +22,7 @@
         <footer class="card-footer">
             <span class="card-footer-item">
                 <%= link_to users_path(gig.user) do %>
-                    <figure class="image is-32x32">
+                    <figure class="image is-32x32 avatar <%= gig.user.online? ? 'online' : 'offline' %>">
                         <%= image_tag avatar_url(gig.user), class: "is-rounded" %>
                     </figure>
                 <% end %>

@@ -12,9 +12,11 @@
 
                             <!-- Avatar -->
                             <div class="card-content is-horizontal-center is-flex">
-                                <figure class="image is-128x128">
-                                    <%= image_tag avatar_url(@user), class: "is-rounded" %>
-                                </figure>
+                                <%= link_to users_path(@user) do %>
+                                    <figure class="avatar image is-128x128 <%= @user.online? ? 'online' : 'offline' %>">
+                                        <%= image_tag avatar_url(@user), class: "is-rounded" %>
+                                    </figure>
+                                <% end %>
                             </div>
                             
                             <div class="card-content">
@@ -151,11 +153,13 @@
                         <!-- Sample reviews -->
                         <% @reviews.each do |r| %>
                             <article class="media">
-                                <figure class="media-left">
-                                    <p class="image is-64x64">
-                                        <%= image_tag avatar_url(r.buyer), class: "is-rounded" %>
-                                    </p>
-                                </figure>
+                                <%= link_to users_path(r.buyer) do %>
+                                    <figure class="media-left">
+                                        <p class="image is-64x64 avatar <%= r.buyer.online? ? 'online' : 'offline' %>">
+                                            <%= image_tag avatar_url(r.buyer), class: "is-rounded" %>
+                                        </p>
+                                    </figure>
+                                <% end %>
 
                                 <div class="media-content">
                                     <div class="content">
@@ -194,9 +198,11 @@
                 <div class="column is-one-third">
                     <div class="card" st>
                         <div class="card-content is-horizontal-center is-flex">
-                            <figure class="image is-128x128">
-                                <%= image_tag avatar_url(@user), class: "is-rounded" %>
-                            </figure>
+                            <%= link_to users_path(@user) do %>
+                                <figure class="image is-128x128 avatar <%= @user.online? ? 'online' : 'offline' %>">
+                                    <%= image_tag avatar_url(@user), class: "is-rounded" %>
+                                </figure>
+                            <% end %>
                         </div>
                         <div class="card-content">
                             <hr>

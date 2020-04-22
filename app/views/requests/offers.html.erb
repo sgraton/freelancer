@@ -26,9 +26,11 @@
                         <tr>
                             <td><%= o.created_at.strftime('%d, %b %Y') %></td>
                             <td>
-                                <figure class="image is-48x48">
-                                    <%= image_tag avatar_url(o.user), class: "is-rounded" %>
-                                </figure>
+                                <%= link_to users_path(o.user) do %>
+                                    <figure class="image is-48x48 avatar <%= o.user.online? ? 'online' : 'offline' %>">
+                                        <%= image_tag avatar_url(o.user), class: "is-rounded" %>
+                                    </figure>
+                                <% end %>
                             </td>
                             <td><%= o.note %></td>
                             <td>$<%= o.amount %></td>

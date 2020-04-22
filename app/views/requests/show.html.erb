@@ -53,9 +53,11 @@
                                         <!-- Buyer Avatar -->
                                         <div class="column">
                                             <div class="card-content is-horizontal-center is-flex">
-                                                <figure class="image is-96x96">
-                                                    <%= image_tag avatar_url(@request.user), class: "is-rounded" %>
-                                                </figure>
+                                                <%= link_to users_path(@request.user) do %>
+                                                    <figure class="image is-96x96 avatar <%= @request.user.online? ? 'online' : 'offline' %>">
+                                                        <%= image_tag avatar_url(@request.user), class: "is-rounded" %>
+                                                    </figure>
+                                                <% end %>
                                             </div>
                                             <div class="content has-text-centered">
                                                 <p class="title is-5"><%= @request.user.full_name %></p>

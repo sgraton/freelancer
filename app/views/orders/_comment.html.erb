@@ -1,9 +1,11 @@
 <article class="media">
-    <figure class="media-left">
-        <p class="image is-64x64">
-            <%= image_tag avatar_url(comment.user), class: "is-rounded" %>
-        </p>
-    </figure>
+    <%= link_to users_path(comment.user) do %>
+        <figure class="media-left">
+            <p class="image is-64x64 avatar <%= comment.user.online? ? 'online' : 'offline' %>">
+                <%= image_tag avatar_url(comment.user), class: "is-rounded" %>
+            </p>
+        </figure>
+    <% end %>
     <div class="media-content">
         <div class="content">
             <p>

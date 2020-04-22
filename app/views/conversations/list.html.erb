@@ -15,9 +15,11 @@
                                     <div class="message-body">
                                         <div class="media">
                                             <div class="media-left">
-                                                <figure class="image is-32x32 m-r-5 avatar <%= @client.online? ? 'online' : 'offline' %>">
-                                                    <%= image_tag avatar_url(@client), class: "is-rounded" %>
-                                                </figure>
+                                                <%= link_to users_path(@client) do %>
+                                                    <figure class="image is-32x32 m-r-5 avatar <%= @client.online? ? 'online' : 'offline' %>">
+                                                        <%= image_tag avatar_url(@client), class: "is-rounded" %>
+                                                    </figure>
+                                                <% end %>
                                             </div>                                
                                             <div class="media-content">
                                                 <p class="title is-6"><%= @client.full_name %></p>

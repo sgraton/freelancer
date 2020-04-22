@@ -9,9 +9,11 @@
     <div class="column is-7">
         <article class="media">
             <div class="media-left">
-                <figure class="image is-32x32">
-                    <%= image_tag avatar_url(m.user), class: "is-rounded" %>
-                </figure>
+                <%= link_to users_path(m.user) do %>
+                    <figure class="image is-32x32 avatar <%= m.user.online? ? 'online' : 'offline' %>">
+                        <%= image_tag avatar_url(m.user), class: "is-rounded" %>
+                    </figure>
+                <% end %>
             </div>
             <div class="media-content">
                 <p class="notification conversation-message">

@@ -43,9 +43,11 @@
             <!-- Receiver profile -->
             <article class="media">
                 <div class="media-left">
-                    <figure class="image is-64x64">
-                        <%= image_tag avatar_url(@user), class: "is-rounded" %>
-                    </figure>
+                    <%= link_to users_path(@user) do %>
+                        <figure class="image is-64x64 avatar <%= @user.online? ? 'online' : 'offline' %>">
+                            <%= image_tag avatar_url(@user), class: "is-rounded" %>
+                        </figure>
+                    <% end %>
                 </div>
                 <div class="media-content">
                     <div class="content">

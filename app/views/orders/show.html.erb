@@ -16,11 +16,13 @@
                 <hr>
 
                 <article class="media">
-                    <figure class="media-left">
-                        <p class="image is-64x64">                            
-                            <%= image_tag avatar_url(current_user), class: "is-rounded" %>
-                        </p>
-                    </figure>
+                    <%= link_to users_path(current_user) do %>
+                        <figure class="media-left">
+                            <p class="image is-64x64 avatar <%= current_user.online? ? 'online' : 'offline' %>">                            
+                                <%= image_tag avatar_url(current_user), class: "is-rounded" %>
+                            </p>
+                        </figure>
+                    <% end %>
                     <div class="media-content">
                         <%= form_with model: Comment.new, id: "new_comment" do |f| %>
                             <%= f.hidden_field :order_id, value: @order.id %>

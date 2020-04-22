@@ -12,7 +12,7 @@
 
                             <!-- Avatar -->
                             <div class="card-content is-horizontal-center is-flex">
-                                <figure class="image is-128x128">
+                                <figure class="image is-128x128 avatar <%= current_user.online? ? 'online' : 'offline' %>">
                                     <%= image_tag avatar_url(current_user), class: "is-rounded" %>
                                 </figure>
                             </div>
