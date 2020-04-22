@@ -88,6 +88,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_lastseenable (0.0.6)
+      devise
+      rails (>= 3.0.4)
     erubi (1.9.0)
     faker (1.9.3)
       i18n (>= 0.7)
@@ -284,6 +287,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise (= 4.7.1)
+  devise_lastseenable
   faker (= 1.9.3)
   jbuilder (~> 2.7)
   kaminari

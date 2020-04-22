@@ -64,28 +64,7 @@
                                         <% end %>
                                     </div>
                                 </article>                                
-                                <hr class="h-10">
-
-                                <!-- Online Status -->
-                                <article >
-                                    <div class="media">
-                                        <div class="media-content">Online Status</div>
-                                        <div class="media-right">
-                                            <strong><% if current_user.status %>Online<% else %>Offline<% end %></strong> <i class="toggle far fa-edit" aria-controls="user-status"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="content">
-                                        <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-status', class: 'is-hidden'} do |f| %>
-                                            <div class="field">
-                                                <%= f.select(:status, options_for_select([["Online", true], ["Offline", false]]), {}, {class: 'select is-fullwidth'}) %>
-                                            </div>
-                                            <a class="toggle button is-light" aria-controls="user-status">Cancel</a>
-                                            <%= f.submit "Save", class: "button is-danger" %>
-                                        <% end %>
-                                    </div>
-                                </article>                       
-                                <hr class="h-10">
+                                <hr class="h-10">       
 
                                 <!-- Subscription -->
                                 <% if @subscription.present? %>

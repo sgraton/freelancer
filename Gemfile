@@ -29,6 +29,7 @@ gem 'trestle-auth'
 gem 'trestle-search'
 gem 'trestle-tinymce'
 gem 'activemerchant'
+gem 'devise_lastseenable'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

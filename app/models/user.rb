@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable
+         :omniauthable, :lastseenable
 
   validates :full_name, presence: true, length: {maximum: 50}
 
@@ -35,5 +35,9 @@ class User < ApplicationRecord
         user.provider = auth.provider
       end
     end
+  end
+
+  def online?
+    return !last_seen.nil? && ((last_seen + 10.minutes) > Time.now)
   end
 end
