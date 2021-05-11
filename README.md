@@ -1,4 +1,7 @@
-# README
+# Freelancer
+
+[![Build Status](https://travis-ci.org/sgraton/freelancer.svg?branch=master)](https://travis-ci.org/sgraton/freelancer)
+[![codecov.io](https://codecov.io/github/sgraton/freelancer/coverage.svg?branch=master)](https://codecov.io/github/sgraton/freelancer?branch=master)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
