@@ -47,7 +47,13 @@ class PagesController < ApplicationController
     query_condition[0] += " and ((gigs.has_single_pricing = true and pricings.pricing_type = 0) or (gigs.has_single_pricing = false))"
 
     # Sort by
-    @sort = params[:sort].present? ? params[:sort] : "price asc"
+    @sort = "price asc"
+
+    if params[:sort].present? 
+      if params[:sort] == 'price desc' || params[:sort] == 'gigs.created_at desc' || params[:sort] == 'gigs.created_at asc'
+        @sort = params[:sort]
+      end
+    end
 
     # Search
     @gigs = Gig
