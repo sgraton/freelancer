@@ -126,7 +126,6 @@ app/channels/message_channel.rb
 test/models/conversation_test.rb
 test/models/transaction_test.rb
 test/models/administrator_test.rb
-test/models/message_test.rb
 test/models/user_test.rb
 test/application_system_test_case.rb
 test/test_helper.rb
@@ -228,4 +227,4 @@ Gemfile.lock
 postcss.config.js
 coverage/codecov-result.json
 <<<<<< network
-{"coverage":{"test/channels/comment_channel_test.rb":[null,1,null,1,null,null,null,null,null],"test/channels/message_channel_test.rb":[null,1,null,1,null,null,null,null,null],"test/models/administrator_test.rb":[null,1,null,1,null,null,null,null],"test/models/conversation_test.rb":[null,1,null,1,null,null,null,null],"test/models/message_test.rb":[null,1,null,1,1,0,0,null,null],"test/models/transaction_test.rb":[null,1,null,1,1,0,0,null,null],"test/models/user_test.rb":[null,1,null,1,null,1,0,0,null,null,1,0,0,0,null,0,0,null,null,1,0,0,0,null,0,0,null,0,0,null,null]}}
+{"coverage":{"test/channels/comment_channel_test.rb":[null,1,null,1,null,null,null,null,null],"test/channels/message_channel_test.rb":[null,1,null,1,null,null,null,null,null],"test/models/administrator_test.rb":[null,1,null,1,null,null,null,null],"test/models/conversation_test.rb":[null,1,null,1,null,null,null,null],"test/models/transaction_test.rb":[null,1,null,1,1,0,0,null,null],"test/models/user_test.rb":[null,1,null,1,null,1,0,0,null,null,1,0,0,0,null,0,0,null,null,1,0,0,0,null,0,0,null,0,0,null,null]}}

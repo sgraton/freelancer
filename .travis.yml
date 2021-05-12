@@ -1,4 +1,5 @@
 language: ruby
+lang: ruby
 rvm:
 - 2.6.3
 cache:
@@ -22,5 +23,5 @@ deploy:
   - rails db:migrate
 env:
   secure: k7oSO9gOowCIXC+DYUKbT5crb0vxKYPzjvy8yGqLMZOAtD3ugiQJAydY5Kkg4GTRXCREQe9Wii4zCXGm0yTWGohJmMtiZs11ZrR+M5JecKNyQZ7HfSvZirM3WnVoiojuhaqR3VKkQoU//SyopsqHGDGDRSkDLalGlDhfksCh0WWmX6DJ2YECs6GdgizeumxzkbbCVGqWRrvscJ7A97NEafK9ysFHXOEHItOjrAuk7+Lv39iDbGP2CVK5cIbD+/8T/JCBocuQ+i6EHpyRsQEEb259idsSOwByDn27k9oNE3LtR2NgvSCdGdw8jnQsHiKpgRfRWacq4yI0lv7hcmhPzsGaV7fjBIqz6/V3P0GwCtOZg/1Xl3ShOl412GgLm/6x4QZtLyODGleao2f+ExKalUpwVJMeG5ZIDoFGA2FNi15X16iZbLf7SxA+Hsw72B/rB4HATOTtGW3EFjUbil5t+6P5nfBQRrxq/EN6/uXQpatHfswLgeay+7IS2jo/UDPfjxASCEtHvFkBrQhoHyXQPIH7uXzsa/0mnTyjT3J3b9lvtc8WgaRTQob81+DRkeCaCk/KfffYk9DuQiiRFf82naXjtMBy3MH4Md4qJCplYZ5Wk5nDmMj9XKCcb0HJxfRuPmOqRI5Jm7qjco0AThRWgcM15TS1mjLR8MpnCnXGsfE=
-lang: ruby
-script: bundle exec rake
+script: 
+- bundle exec rake
