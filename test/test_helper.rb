@@ -2,11 +2,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 
-if ENV.include? 'CODECOV_TOKEN'
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
-end
+require 'simplecov'
+SimpleCov.start
 
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
