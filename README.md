@@ -4,25 +4,39 @@
 [![codecov.io](https://codecov.io/github/sgraton/freelancer/coverage.svg?branch=master)](https://codecov.io/github/sgraton/freelancer?branch=master)
 [![security](https://hakiri.io/github/sgraton/freelancer/master.svg)](https://hakiri.io/github/sgraton/freelancer/master)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
 
-Things you may want to cover:
+### Clone the repository
 
-* Ruby version
+```shell
+git clone git@github.com:sgraton/freelancer.git
+cd freelancer
+```
 
-* System dependencies
+### Check your Ruby version
 
-* Configuration
+```shell
+ruby -v
+```
 
-* Database creation
+The ouput should start with something like `ruby 2.6.3`
 
-* Database initialization
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
 
-* How to run the test suite
+```shell
+rbenv install 2.6.3
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Install dependencies
 
-* Deployment instructions
+Using [Bundler](https://github.com/bundler/bundler) and [Yarn](https://github.com/yarnpkg/yarn):
 
-* ...
+```shell
+bundle && yarn
+```
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
+```
