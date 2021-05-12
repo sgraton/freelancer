@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class TransactionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should create with nothing" do
+    transaction = Transaction.new
+    assert transaction.save
+  end
 end

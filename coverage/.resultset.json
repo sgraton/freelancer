@@ -1,0 +1,116 @@
+{
+  "Minitest": {
+    "coverage": {
+      "/Users/steven/Desktop/freelancer/test/channels/comment_channel_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/steven/Desktop/freelancer/test/channels/message_channel_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/steven/Desktop/freelancer/test/models/administrator_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/steven/Desktop/freelancer/test/models/conversation_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/steven/Desktop/freelancer/test/models/message_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/steven/Desktop/freelancer/test/models/transaction_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/steven/Desktop/freelancer/test/models/user_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1620802863
+  },
+  "Unit Tests": {
+    "coverage": {
+    },
+    "timestamp": 1620802899
+  }
+}
