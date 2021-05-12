@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/sgraton/freelancer.svg?branch=master)](https://travis-ci.org/sgraton/freelancer)
 [![codecov.io](https://codecov.io/github/sgraton/freelancer/coverage.svg?branch=master)](https://codecov.io/github/sgraton/freelancer?branch=master)
+[![security](https://hakiri.io/github/sgraton/freelancer/master.svg)](https://hakiri.io/github/sgraton/freelancer/master)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
