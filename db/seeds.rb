@@ -1,12 +1,12 @@
 # Create dummy categories
-5.times do
+6.times do
     category = Category.create(
         name: Faker::Company.industry
     )
 end
 
 # Create dummy users
-5.times do
+10.times do
     user = User.create(
         full_name: Faker::Name.name,
         email: Faker::Internet.free_email,
@@ -39,7 +39,7 @@ end
 end
 
 # Create dummy gigs
-10.times do
+30.times do
     random_user = User.all.sample(1)[0]
     category = Category.all.sample(1)[0]
     gig = Gig.create(
