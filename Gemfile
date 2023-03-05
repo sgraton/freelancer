@@ -16,7 +16,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bulma-extensions-rails'
 gem 'devise', '4.7.1'
 
-gem 'omniauth', '=1.9.0'
+gem 'omniauth', '2.0.0'
 gem 'omniauth-facebook', '=5.0.0'
 
 gem 'faker', '=1.9.3'
