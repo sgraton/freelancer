@@ -368,6 +368,7 @@ DEPENDENCIES
   puma
   rails (~> 7.0.4.2)
   redis (~> 5.0)
+  rexml
   sass-rails
   selenium-webdriver
   spring

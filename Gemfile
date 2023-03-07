@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 
 gem 'bootsnap', require: false
+gem 'rexml'
 
 gem 'bulma-extensions-rails'
 gem 'devise'
