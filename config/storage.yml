@@ -8,8 +8,8 @@ local:
 
 amazon:
   service: S3
-  access_key_id: <%= ENV['BUCKETEER_AWS_ACCESS_KEY_ID'] %>
-  secret_access_key: <%= ENV['BUCKETEER_AWS_ACCESS_KEY_ID'] %>
+  access_key_id: <%= ENV['S3_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['S3_SECRET_ACCESS_KEY'] %>
   region: "eu-west-3"
   bucket: "freelancer-heroku"
 

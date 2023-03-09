@@ -1,4 +1,4 @@
-# fly.toml file generated for freelancer on 2023-03-06T20:39:33+01:00
+# fly.toml file generated for freelancer on 2023-03-09T14:04:58+01:00
 
 app = "freelancer"
 kill_signal = "SIGINT"
