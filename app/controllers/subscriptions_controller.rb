@@ -1,6 +1,11 @@
 class SubscriptionsController < ApplicationController
-    before_action :authenticate_user!, only: [:subscribe]
+    before_action :check_user, only: [:subscribe]
     skip_before_action :verify_authenticity_token, only: [:webhook]
+
+    def check_user
+        return if user_signed_in?
+        redirect_to new_user_session_path, alert: 'You need to sign in or sign up before continuing.'
+    end
 
     def subscribe
         if !current_user.stripe_id
