@@ -1,38 +1,38 @@
 <section class="section">
     <div class="container">
         <div class="form-container">
-            <p class="title is-4 has-text-centered">What Services Are You Looking For ?</p>
+            <p class="title is-4 has-text-centered">Quels sont les services que vous recherchez ?</p>
 
             <%= form_for @request do |f| %>
               <div class="field">
-                <label class="label">Title (*)</label>
-                <%= f.text_field :title, placeholder: "I request...", class: "input" %>
+                <label class="label">Titre (*)</label>
+                <%= f.text_field :title, placeholder: "Je demande...", class: "input" %>
               </div>
               <div class="field">
                 <label class="label">Description (*)</label>
-                <%= f.text_area :description, placeholder: "I'm looking for...", class: "textarea" %>
+                <%= f.text_area :description, placeholder: "Je cherche...", class: "textarea" %>
               </div>
               <div class="field">
-                <label class="label">Choose a category</label>
+                <label class="label">Choisir une catégorie</label>
                 <div class="select is-fullwidth">
                     <%= f.select(:category_id, options_for_select(@categories.map { |c| [c.name, c.id] }, selected: @request.category_id)) %>
                 </div>
               </div>
               <div class="field">
-                <label class="label">Delivery (*)</label>
-                <%= f.number_field :delivery, placeholder: "1-30 days", class: "input" %>
+                <label class="label">Livraison (*)</label>
+                <%= f.number_field :delivery, placeholder: "1-30 jours", class: "input" %>
               </div>
               <div class="field">
                 <label class="label">Budget</label>
-                <%= f.number_field :budget, placeholder: "5$ minimum", class: "input" %>
+                <%= f.number_field :budget, placeholder: "5€ minimum", class: "input" %>
               </div>
               <div class="field">
-                <label class="label">Upload attachment (Optional)</label>
+                <label class="label">Télécharger une pièce jointe (facultatif)</label>
                 <div class="file is-warning has-name">
                     <label class="file-label">
                         <%= f.file_field :attachment_file, class: "file-input" %>
-                        <span class="file-cta"><span class="file-label">Choose a file...</span></span>
-                        <span class="file-name" id="file-name">No file selected</span>
+                        <span class="file-cta"><span class="file-label">Choisir un fichier...</span></span>
+                        <span class="file-name" id="file-name">Aucun fichier sélectionné</span>
                     </label>
                 </div>
               </div>

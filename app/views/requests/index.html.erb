@@ -1,23 +1,23 @@
 <section class="section">
     <div class="container">
         <p class="title">
-            Manage Requests
-            <%= link_to "Post New Request", new_request_path, class: "button is-primary is-pulled-right" %>
+            Gérer les demandes
+            <%= link_to "Poster une nouvelle demande", new_request_path, class: "button is-primary is-pulled-right" %>
         </p>
 
         <table class="table is-fullwidth">
             <thead class="is-centered">
                 <tr>
                     <th>Date</th>
-                    <th>Request</th>
-                    <th class="has-text-right">Offers</th>
+                    <th>Demande</th>
+                    <th class="has-text-right">Offres</th>
                     <th class="has-text-right">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <% if @requests.blank? %>
                     <tr>
-                        <td colspan="4" class="has-text-centered"><h1>NOTHING TO SHOW HERE</h1></td>
+                        <td colspan="4" class="has-text-centered"><h1>RIEN À MONTRER ICI</h1></td>
                     </tr>
                 <% else %>
                     <% @requests.each do |r| %>
@@ -34,7 +34,7 @@
                                     </span>
                                 <% end %>
 
-                                <%= link_to r, method: :delete, data: {confirm: "Are you sure ?"} do %>
+                                <%= link_to r, method: :delete, data: {confirm: "Êtes-vous sûr ?"} do %>
                                     <span class="icon has-text-danger">
                                         <i class="far fa-trash-alt fa-lg"></i>
                                     </span>

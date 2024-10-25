@@ -82,6 +82,7 @@ class PagesController < ApplicationController
   end
 
   def plans
-    @plans = Stripe::Plan.list(product: 'prod_H7plWQbon608xp')
+    # Récupération des prix 
+    @plans = Stripe::Plan.list(product: 'prod_H7plWQbon608xp', active: true)
   end
 end
