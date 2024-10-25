@@ -1,6 +1,6 @@
 <section class="section">
     <div class="container">
-        <p class="title">Gérer les ordres de vente</p>
+        <p class="title">Gérer mes ventes</p>
 
         <table class="table is-fullwidth">
             <thead>
@@ -17,7 +17,7 @@
             <tbody>
                 <% if @orders.blank? %>
                     <tr>
-                        <td colspan="6" class="has-text-centered"><h1>RIEN À MONTRER ICI</h1></td>
+                        <td colspan="6" class="has-text-centered"><h1>AUCUNE DONNEE</h1></td>
                     </tr>
                 <% end %>
                 <% @orders.each do |o| %>

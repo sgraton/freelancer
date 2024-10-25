@@ -11,6 +11,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://js.stripe.com/v3/"></script>
 
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+
     <% if content_for?(:head)  %>
       <%= yield(:head) %>
     <% end %>

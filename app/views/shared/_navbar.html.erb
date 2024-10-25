@@ -1,8 +1,9 @@
 
-<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+<nav class="navbar" style="background-color: #E3E2DD" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
-            <h1 class="title is-4">Accueil</h1>
+            <%= image_tag 'loireconnect.png', class: 'is-background' %>
+            &nbsp;&nbsp;&nbsp;<h1 class="title is-4">Loire-Connect</h1>
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -70,36 +71,36 @@
         <div class="container">
             <div class="navbar">
                 <%= link_to 'Tableau de bord', dashboard_path, class: 'navbar-item' %>
-                <%= link_to 'Calendrier', calendar_path, class: 'navbar-item' %>
+                <!--%= link_to 'Calendrier', calendar_path, class: 'navbar-item' %-->
 
-                <div class="navbar-item has-dropdown is-hoverable">
+                <!--div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Vendre</a>
                     <div class="navbar-dropdown">
                         <%= link_to "Poster un service", new_gig_path, class: "navbar-item" %>
                     </div>
-                </div>
+                </!--div-->
 
-                <div class="navbar-item has-dropdown is-hoverable">
+                <!--div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Acheter</a>
                     <div class="navbar-dropdown">
                         <%= link_to "Créer une demande", new_request_path, class: "navbar-item" %>
                         <%= link_to "Gérer les demandes", requests_path, class: "navbar-item" %>
                     </div>
-                </div>
+                </!--div-->
 
-                <div class="navbar-item has-dropdown is-hoverable">
+                <!--div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Requêtes d'acheteurs</a>
                     <div class="navbar-dropdown">
                         <%= link_to "Requêtes actives", all_requests_path, class: "navbar-item" %>
                         <%= link_to "Offres envoyées", my_offers_path, class: "navbar-item" %>
                     </div>
-                </div>
+                </!--div-->
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Commandes</a>
                     <div class="navbar-dropdown">
-                        <%= link_to 'Ordres de vente', selling_orders_path, class: "navbar-item" %>
-                        <%= link_to 'Ordres d\'achat', buying_orders_path, class: "navbar-item" %>
+                        <%= link_to 'Ventes', selling_orders_path, class: "navbar-item" %>
+                        <%= link_to 'Achats', buying_orders_path, class: "navbar-item" %>
                     </div>
                 </div>
 

@@ -72,13 +72,13 @@
                                         <div class="media">
                                             <div class="media-content">Abonnement</div>
                                             <div class="media-right">
-                                                <strong><% if @plan %> <%= @plan.nickname %> <% end %></strong> <i class="toggle far fa-edit" aria-controls="user-subscription"></i>
+                                                <strong><% if @plan %> <%= @plan.nickname %> <% end %></strong>&nbsp;<i class="toggle far fa-edit" aria-controls="user-subscription"></i>
                                             </div>
                                         </div>
 
                                         <div class="content">
                                             <%= form_with url: remove_subscription_path, method: :delete, html: {id: 'user-subscription', class: 'is-hidden'} do |f| %>
-                                                <small>Expire at : <%= @subscription.expired_at %> </small>
+                                                <small>Expire le : <%= @subscription.expired_at %> </small>
                                                 <%= f.submit "Annuler mon abonnement", class: "button is-danger is-fullwidth m-t-20" %>
                                             <% end %>
                                         </div>
