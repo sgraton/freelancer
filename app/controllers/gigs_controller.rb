@@ -35,7 +35,7 @@ class GigsController < ApplicationController
           next;
         else
           if pricing[:title].blank? || pricing[:description].blank? || pricing[:delivery_time].blank? || pricing[:price].blank? 
-            return redirect_to request.referrer, flash: {error: "Prix non valide."}
+            return redirect_to request.referrer, flash: {error: "Tous les chemps n'ont pas été renseignés."}
           end
         end
       end
@@ -55,7 +55,7 @@ class GigsController < ApplicationController
           next;
         else
           if pricing[:title].blank? || pricing[:description].blank? || pricing[:delivery_time].blank? || pricing[:price].blank?
-            return redirect_to edit_gig_path(@gig, step: 2), flash: {error: "Prix non valide."}
+            return redirect_to edit_gig_path(@gig, step: 2), flash: {error: "Tous les chemps n'ont pas été renseignés."}
           end
         end
       end

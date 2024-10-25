@@ -13,7 +13,7 @@
                             <div class="media-content">
                                 <p>
                                     <%= @request.category.name %>
-                                    <span class="is-pulled-right">Posted on: <%= @request.created_at.strftime('%d, %b %Y') %></span>
+                                    <span class="is-pulled-right">Posté en : <%= @request.created_at.strftime('%d, %b %Y') %></span>
                                 </p>
                                 Doit être livré en : <%= @request.delivery %> jours | Offres : <%= @request.offers.count %> | Budget : €<%= @request.budget %>
                             </div>

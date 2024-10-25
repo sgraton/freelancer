@@ -17,7 +17,7 @@
         <% else %>
             <%= link_to "Publier", gig_path(@gig.id, gig: {active: true}, step: @step), 
                         method: :put, 
-                        data: {confirm: "Do you want to publish this Gig ?"},
+                        data: {confirm: "Vous êtes sur le point de publier votre service. Êtes-vous sûr de vouloir continuer ?"},
                         class: "button is-danger" %>
         <% end %>
     </p>

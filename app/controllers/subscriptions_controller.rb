@@ -17,7 +17,7 @@ class SubscriptionsController < ApplicationController
             return redirect_to request.referrer, alert: "Plan non valide"
         end
 
-        subscription = Subsription.exists?(user_id: current_user.id)
+        subscription = Subsription.exists?(user_id: current_user.id, status: Subsription.statuses[:success])
         if subscription.present?
             return redirect_to request.referrer, alert: "Vous ne pouvez pas souscrire à un autre plan"
         end
@@ -32,10 +32,11 @@ class SubscriptionsController < ApplicationController
         subscription = Subsription.create(
             user_id: current_user.id,
             plan_id: plan.id,
-            sub_id: stripe_sub.id
+            sub_id: stripe_sub.id,
+            expired_at: Date.current + 1.month,
         )
 
-        return redirect_to dashboard_path, notive: "Abonnement réussi"
+        return redirect_to dashboard_path, notice: "Abonnement réussi"
     end
 
     def webhook
