@@ -2,14 +2,14 @@
     <div class="container">
         <div class="columns is-centered">
             <div class="column is-8-tablet is-6-desktop is-6-widescreen">
-                <p class="title has-text-centered">Payout Method</p>
+                <p class="title has-text-centered">Méthode de paiement</p>
 
                 <%= form_with url: update_payout_path, local: true do |f| %>
                     <div class="field">
-                        <%= f.text_field :paypal, value: current_user.paypal, placeholder: "Your Paypal Email", class: "input" %>
+                        <%= f.text_field :paypal, value: current_user.paypal, placeholder: "Votre adresse Paypal", class: "input" %>
                     </div>
                     <div class="field is-grouped is-grouped-centered">
-                        <%= f.submit "Save", class: "button is-primary" %>
+                        <%= f.submit "Sauvegarder", class: "button is-primary" %>
                     </div>
                 <% end %>
             </div>

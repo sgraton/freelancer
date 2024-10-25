@@ -42,7 +42,7 @@
                             <div class="card-content">
                                 <article class="media">
                                     <div class="media-content">
-                                        <p><strong>About This Gig</strong></p>
+                                        <p><strong>A propos de ce service</strong></p>
                                         <hr/>
                                         <%= @gig.description %>
                                     </div>
@@ -83,7 +83,7 @@
                                                     <strong><%= p.title %> Package</strong>                                                                                                        
                                                 </div>
                                                 <div class="media-right">
-                                                    <p class="title is-4">$<%= p.price %></p>
+                                                    <p class="title is-4">€<%= p.price %></p>
                                                 </div>                                                
                                             </div>
                                             <div class="content f-15">
@@ -94,9 +94,9 @@
                                             </div>
 
                                             <% if @gig.active && (!user_signed_in? || @gig.user_id != current_user.id) %>
-                                                <%= link_to "Continue ($#{p.price})", checkout_path(@gig.id, p.pricing_type), class: "button is-fullwidth is-danger" %>
+                                                <%= link_to "Continue (€#{p.price})", checkout_path(@gig.id, p.pricing_type), class: "button is-fullwidth is-danger" %>
                                             <% else %>
-                                                <button class="button is-fullwidth is-danger" disabled>Not Available</button>
+                                                <button class="button is-fullwidth is-danger" disabled>Non disponible</button>
                                             <% end %>
 
                                         </div>
@@ -160,15 +160,15 @@
         slidesToShow: 1
     });
 
-    $(document).ready(function() {
-        $('#tabs li').on('click', function() {
-            var type = $(this).data('tab');
+    €(document).ready(function() {
+        €('#tabs li').on('click', function() {
+            var type = €(this).data('tab');
 
-            $('#tabs li').removeClass('is-active');
-            $(this).addClass('is-active');
+            €('#tabs li').removeClass('is-active');
+            €(this).addClass('is-active');
 
-            $('.tab-content').hide();
-            $('#tab-' + type).show();
+            €('.tab-content').hide();
+            €('#tab-' + type).show();
         })
     });
 </script>

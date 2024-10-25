@@ -5,7 +5,7 @@
             <!-- LEFT SIDE -->
             <div class="column is-two-thirds">
                 <p class="menu-label">
-                    Comments on your order
+                    Commentaires sur votre commande
                 </p>
                 <hr>
                 <div id="comment-list">
@@ -35,15 +35,15 @@
                                     <label class="file-label">
                                         <%= f.file_field :attachment_file, class: "file-input" %>
                                         <span class="file-cta">
-                                            <span class="file-label">Attachment (Optional)</span>
+                                            <span class="file-label">Pièce jointe (facultatif)</span>
                                         </span>
-                                        <span class="file-name" id="file-name">No file selected</span>
+                                        <span class="file-name" id="file-name">Aucun fichier sélectionné</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div class="field is-pulled-right">
-                                <%= f.submit "Post comment", class: "button is-primary" %>                      
+                                <%= f.submit "Poster un commentaire", class: "button is-primary" %>                      
                             </div>
                         <% end %>
                     </div>
@@ -66,9 +66,9 @@
                         </p>
                         <br>
                         <small>
-                            <p>Seller: <%= @order.seller_name %></p>
+                            <p>Vendeur : <%= @order.seller_name %></p>
                             <br>
-                            <p>Order: <%= @order.id %></p>
+                            <p>Commande : <%= @order.id %></p>
                             <br>
                             <p><%= @order.created_at.strftime('%d, %b %Y') %></p>  
                         </small>                    

@@ -6,15 +6,15 @@
           <div class="box">
             
             <div class="field has-text-centered">
-              <strong>Edit User</strong>
+              <strong>Edition profil</strong>
             </div>
 
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
               <%= render "devise/shared/error_messages", resource: resource %>
 
               <div class="field">
-                <%= f.label :full_name, class: "label" %>
-                <%= f.text_field :full_name, autofocus: true, autocomplete: "full_name", class: "input" %>
+                <%= f.label "Nom", class: "label" %>
+                <%= f.text_field :full_name, autofocus: true, autocomplete: "Nom", class: "input" %>
               </div>
 
               <div class="field">
@@ -23,15 +23,15 @@
               </div>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <div>En attente de confirmation pour : <%= resource.unconfirmed_email %></div>
               <% end %>
 
               <div class="field">
-                <%= f.label :password, class: "label" %> <i>(leave blank if you don't want to change it)</i><br />
-                <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+                <%= f.label :password, class: "label" %> <i>(laissez vide si vous ne souhaitez pas le modifier)</i><br />
+                <%= f.password_field :password, autocomplete: "nouveau-mot-de-passe", class: "input" %>
                 <% if @minimum_password_length %>
                   <br />
-                  <em><%= @minimum_password_length %> characters minimum</em>
+                  <em><%= @minimum_password_length %> caractères minimum</em>
                 <% end %>
               </div>
 
@@ -41,11 +41,11 @@
               </div>
 
               <div class="field">
-                <%= f.submit "Update", class: "button is-danger is-fullwidth" %>
+                <%= f.submit "Mettre à jour", class: "button is-danger is-fullwidth" %>
               </div>
             <% end %>
 
-            <%= link_to "Back", :back, class: "button is-fullwidth m-t-10 m-b-10" %>
+            <%= link_to "Retour", :back, class: "button is-fullwidth m-t-10 m-b-10" %>
 
           </div>
         </div>

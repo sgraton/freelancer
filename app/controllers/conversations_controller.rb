@@ -14,7 +14,7 @@ class ConversationsController < ApplicationController
                                             current_user.id).first
         
         if !@conversation.present?
-            redirect_to conversations_path, alert: "Invalid conversation"
+            redirect_to conversations_path, alert: "Conversation non valide"
         else
             @messages = Message.where(conversation_id: @conversation.id)
         end

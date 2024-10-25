@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
                 return redirect_to buying_orders_path
             end
         else
-            flash[:alert] = 'Price is incorrect.'
+            flash[:alert] = 'Le prix est incorrect.'
         end
 
         return redirect_to request.referrer
@@ -30,9 +30,9 @@ class OrdersController < ApplicationController
 
         if !@order.complete?
             if @order.complete!
-                flash[:notice] = "Saved."
+                flash[:notice] = "Sauvé."
             else
-                flash[:alert] = "Something went wrong."
+                flash[:alert] = "Quelque chose n'a pas fonctionné."
             end
 
             redirect_to buying_orders_path
@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
     private
 
     def is_authorised
-        redirect_to dashboard_path, alert: "You don't have permission" unless Order.where("id = ? and (seller_id = ? or buyer_id = ?)", params[:id], current_user.id, current_user.id)
+        redirect_to dashboard_path, alert: "Vous n'avez pas l'autorisation" unless Order.where("id = ? and (seller_id = ? or buyer_id = ?)", params[:id], current_user.id, current_user.id)
     end
 
     def charge(gig, pricing)
@@ -74,11 +74,11 @@ class OrdersController < ApplicationController
         order.amount = amount
 
         if params[:payment].blank?
-            flash[:alert] = "No payment selected"
+            flash[:alert] = "Pas de paiement sélectionné"
             return false
         elsif params[:payment] == "system"
             if amount > current_user.wallet
-                flash[:alert] = "Not enough money"
+                flash[:alert] = "Pas assez d'argent"
                 return false
             else
                 ActiveRecord::Base.transaction do 
@@ -93,13 +93,13 @@ class OrdersController < ApplicationController
                                         gig: gig
                     order.save
                 end
-                flash[:notice] = "You order is created successfully"
+                flash[:notice] = "Votre commande est créée avec succès"
                 return true
             end
         else
             charge = Stripe::Charge.create({
                 amount: (amount * 100).to_i,
-                currency: 'usd',
+                currency: 'eur',
                 customer: current_user.stripe_id,
                 source: params[:payment]
             })
@@ -116,15 +116,15 @@ class OrdersController < ApplicationController
                                         gig: gig
                     order.save
                 end
-                flash[:notice] = "You order is created successfully"
+                flash[:notice] = "Votre commande est créée avec succès"
                 return true
             end
-            flash[:alert] = "Invalid card"
+            flash[:alert] = "Carte non valide"
             return false
         end
 
     rescue ActiveRecord::RecordInvalid
-        flash[:alert] = "Something went wrongx"
+        flash[:alert] = "Quelque chose n'a pas fonctionné"
         return false
     end
 end

@@ -27,7 +27,7 @@
                                       <div class="file">
                                         <label class="button is-primary is-outlined is-fullwidth">
                                             <%= f.file_field :avatar, class: "file-input", onchange: "this.form.submit();" %>
-                                            <i class="fas fa-upload"></i>&nbsp;&nbsp;&nbsp; Upload Avatar
+                                            <i class="fas fa-upload"></i>&nbsp;&nbsp;&nbsp; Charger un avatar
                                         </label>
                                         </div>
                                     <% end %>
@@ -37,7 +37,7 @@
                                 <!-- Member -->
                                 <article>
                                     <div class="media">
-                                        <div class="media-content">Member Since</div>
+                                        <div class="media-content">Membre depuis</div>
                                         <div class="media-right">
                                             <strong><%= current_user.created_at.strftime('%b %Y') %></strong>
                                         </div>
@@ -48,7 +48,7 @@
                                 <!-- From -->
                                 <article>
                                     <div class="media">
-                                        <div class="media-content">From</div>
+                                        <div class="media-content">De</div>
                                         <div class="media-right">
                                             <strong><%= current_user.from %></strong> <i class="toggle far fa-edit" aria-controls="user-from"></i>
                                         </div>
@@ -59,8 +59,8 @@
                                             <div class="field">
                                                 <%= f.text_field :from, autofocus: true, autcomplete: 'form', class: 'input' %>
                                             </div>
-                                            <a class="toggle button is-light" aria-controls="user-from">Cancel</a>
-                                            <%= f.submit "Save", class: "button is-danger" %>
+                                            <a class="toggle button is-light" aria-controls="user-from">Annuler</a>
+                                            <%= f.submit "Sauvegarder", class: "button is-danger" %>
                                         <% end %>
                                     </div>
                                 </article>                                
@@ -70,7 +70,7 @@
                                 <% if @subscription.present? %>
                                     <article >
                                         <div class="media">
-                                            <div class="media-content">Subscription</div>
+                                            <div class="media-content">Abonnement</div>
                                             <div class="media-right">
                                                 <strong><% if @plan %> <%= @plan.nickname %> <% end %></strong> <i class="toggle far fa-edit" aria-controls="user-subscription"></i>
                                             </div>
@@ -79,7 +79,7 @@
                                         <div class="content">
                                             <%= form_with url: remove_subscription_path, method: :delete, html: {id: 'user-subscription', class: 'is-hidden'} do |f| %>
                                                 <small>Expire at : <%= @subscription.expired_at %> </small>
-                                                <%= f.submit "Cancel My Subscription", class: "button is-danger is-fullwidth m-t-20" %>
+                                                <%= f.submit "Annuler mon abonnement", class: "button is-danger is-fullwidth m-t-20" %>
                                             <% end %>
                                         </div>
                                     </article>
@@ -98,7 +98,7 @@
                                     <div class="media">
                                         <div class="media-content">
                                             <p>
-                                                <strong>About Yourself</strong>
+                                                <strong>À propos de vous</strong>
                                                 <br/>
                                                 <%= current_user.about %>
                                             </p>
@@ -113,8 +113,8 @@
                                             <div class="field">
                                                 <%= f.text_area :about, autofocus: true, autcomplete: 'form', class: 'input' %>
                                             </div>
-                                            <a class="toggle button is-light" aria-controls="user-about">Cancel</a>
-                                            <%= f.submit "Save", class: "button is-danger" %>
+                                            <a class="toggle button is-light" aria-controls="user-about">Annuler</a>
+                                            <%= f.submit "Sauvegarder", class: "button is-danger" %>
                                         <% end %>
                                     </div>
                                 </article>
@@ -125,7 +125,7 @@
                                     <div class="media">
                                         <div class="media-content">
                                             <p>
-                                                <strong>Language</strong>
+                                                <strong>Langue</strong>
                                                 <br/>
                                                 <%= current_user.language %>
                                             </p>
@@ -140,26 +140,13 @@
                                             <div class="field">
                                                 <%= f.text_field :language, autofocus: true, autcomplete: 'form', class: 'input' %>
                                             </div>
-                                            <a class="toggle button is-light" aria-controls="user-language">Cancel</a>
-                                            <%= f.submit "Save", class: "button is-danger" %>
+                                            <a class="toggle button is-light" aria-controls="user-language">Annuler</a>
+                                            <%= f.submit "Sauvegarder", class: "button is-danger" %>
                                         <% end %>
                                     </div>
                                 </article>
                                 <hr class="h-10">
                                 
-                                <!-- Linked Account -->
-                                <article class="media">
-                                    <div class="content">
-                                        <p>
-                                            <strong>Linked Account</strong><br/>
-                                            <% if current_user.uid %>
-                                                <span class="has-text-success">Facebook Verified</span>
-                                            <% else %>
-                                                <%= link_to 'Connect to Facebook', user_facebook_omniauth_authorize_path, class: "has-text-danger", method: :post %>
-                                            <% end %>
-                                        </p>
-                                    </div>
-                                </article>
 
                             </div>
                         </div>
@@ -184,7 +171,7 @@
                                 </div>
 
                                 <div class="card-content">
-                                    <strong>Create a new gig</strong>
+                                    <strong>Créer un nouveau service</strong>
                                 </div>    
 
                             </div>
@@ -217,11 +204,11 @@
                                     <% basic_price = gig.pricings.find{ |p| p.pricing_type == 'basic' } %>
                                     <a class="has-text-danger is-block card-footer-item has-text-right">
                                         <% if !basic_price.nil? and !basic_price.price.nil? %>
-                                            <span class="small-title">STARTING AT</span> 
-                                            <strong>$<%= basic_price.price %></strong>  
+                                            <span class="small-title">À PARTIR DE</span> 
+                                            <strong>€<%= basic_price.price %></strong>  
                                         <% else %>
                                             <strong>
-                                                <span class="small-title has-text-dark">NO PRICING YET</span>
+                                                <span class="small-title has-text-dark">PAS ENCORE DE PRIX</span>
                                             </strong>
                                         <% end %>                                         
                                     </a>

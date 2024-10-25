@@ -6,13 +6,13 @@
       <div class="step-item is-active is-primary">
         <div class="step-marker">1</div>
         <div class="step-details">
-          <p class="step-title">Overview</p>
+          <p class="step-title">Vue d'ensemble</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-marker">2</div>
         <div class="step-details">
-          <p class="step-title">Pricing</p>
+          <p class="step-title">Tarifs</p>
         </div>
       </div>
       <div class="step-item">
@@ -24,13 +24,13 @@
       <div class="step-item">
         <div class="step-marker">4</div>
         <div class="step-details">
-          <p class="step-title">Gallery</p>
+          <p class="step-title">Photos</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-marker">5</div>
         <div class="step-details">
-          <p class="step-title">Publish</p>
+          <p class="step-title">Publier</p>
         </div>
       </div>
 
@@ -38,24 +38,24 @@
       <%= form_for @gig, html: {class: "steps-content m-l-100 m-r-100"} do |f| %>
         <div class="step-content is-active">
           <div class="field">
-              <label class="label">Gig Title</label>
+              <label class="label">Titre du service</label>
               <%= f.text_area :title, autocomplete: "title", class: "textarea" %>
           </div>
           <div class="field">
-              <label class="label">Category</label>
+              <label class="label">Catégorie</label>
               <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] })) %>
           </div>
           <div class="field">
               <label for="checkbox">
-                  <%= f.check_box :has_single_pricing, class: "checkbox", onchange: "this.form.submit();" %> Has Single Price
+                  <%= f.check_box :has_single_pricing, class: "checkbox", onchange: "this.form.submit();" %> A un prix unique
               </label>
           </div>
         </div>
         
         <div class="field is-grouped is-grouped-centered m-t-25">
           <p class="control">
-             <a class="button is-light">Cancel</a>
-             <%= f.submit "Save & Continue", class: "button is-primary" %>
+             <a class="button is-light">Annuler</a>
+             <%= f.submit "Enregistrer et continuer", class: "button is-primary" %>
           </p>
         </div>
       <% end %>

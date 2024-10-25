@@ -1,15 +1,15 @@
 <div class="step-content <%= 'is-active' if @step == 1 %>">
     <div class="field">
-        <label class="label">Gig Title</label>
+        <label class="label">Titre du service</label>
         <%= f.text_area :title, autocomplete: "title", class: "textarea" %>
     </div>
     <div class="field">
-        <label class="label">Category</label>
+        <label class="label">Catégorie</label>
         <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] })) %>
     </div>
     <div class="field">
         <label for="checkbox">
-            <%= f.check_box :has_single_pricing, class: "checkbox", onchange: "this.form.submit();" %> Has Single Price
+            <%= f.check_box :has_single_pricing, class: "checkbox", onchange: "this.form.submit();" %> A un prix unique
         </label>
     </div>
 </div>

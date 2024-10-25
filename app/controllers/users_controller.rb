@@ -16,9 +16,9 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(current_users_params)
-      flash[:notice] = "Saved."
+      flash[:notice] = "Sauvé."
     else
-      flash[:alert] = "Cannot update."
+      flash[:alert] = "Impossible de mettre à jour."
     end
     redirect_to dashboard_path
   end
@@ -37,9 +37,9 @@ class UsersController < ApplicationController
     end
 
     if current_user.update(stripe_id: customer.id, stripe_last_4: customer.sources.data.first['last4'])
-      flash[:notice] = "New Card is saved"
+      flash[:notice] = "La nouvelle carte est enregistrée"
     else
-      flash[:alert] = "Invalid card"
+      flash[:alert] = "Carte non valide"
     end
     redirect_to request.referrer
   rescue Stripe::CardError => e
@@ -49,9 +49,9 @@ class UsersController < ApplicationController
 
   def update_payout
     if current_user.update(paypal: params['paypal'])
-      flash[:notice] = "Update payout succesfully"
+      flash[:notice] = "Mise à jour du paiement réussie"
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Quelque chose n'a pas fonctionné"
     end
     redirect_to request.referrer
   end
@@ -94,11 +94,11 @@ class UsersController < ApplicationController
                                              )
     
     if amount <= 0
-      flash[:alert] = "Invalid amount"
+      flash[:alert] = "Montant non valide"
     elsif amount > current_user.wallet
-      flash[:alert] = "You're asking for more than you have"
+      flash[:alert] = "Vous demandez plus que ce que vous avez"
     elsif !is_pending_withdraw.blank?
-      flash[:alert] = "You currently have a pending withdraw request"
+      flash[:alert] = "Vous avez une demande de retrait en cours"
     else
       transaction = Transaction.new
       transaction.status = Transaction.statuses[:pending]
@@ -108,9 +108,9 @@ class UsersController < ApplicationController
       transaction.amount = amount
 
       if transaction.save
-        flash[:notice] = "Create withdraw request successfully"
+        flash[:notice] = "Demande de retrait créée avec succès"
       else
-        flash[:alert] = "Cannot create a request"
+        flash[:alert] = "Impossible de créer une demande"
       end
     end
 
@@ -122,9 +122,9 @@ class UsersController < ApplicationController
 
     if @subscription.present? && @subscription.sub_id
       Stripe::Subscription.delete(@subscription.sub_id)
-      return redirect_to request.referrer, notice: "Your subscription is cancelled"
+      return redirect_to request.referrer, notice: "Votre abonnement est annulé"
     end
-    return redirect_to request.referrer, alert: "Cannot cancel your subscription"
+    return redirect_to request.referrer, alert: "Impossible d'annuler votre abonnement"
   end
 
   private

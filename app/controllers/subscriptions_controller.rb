@@ -4,22 +4,22 @@ class SubscriptionsController < ApplicationController
 
     def check_user
         return if user_signed_in?
-        redirect_to new_user_session_path, alert: 'You need to sign in or sign up before continuing.'
+        redirect_to new_user_session_path, alert: 'Vous devez vous connecter ou vous inscrire avant de continuer.'
     end
 
     def subscribe
         if !current_user.stripe_id
-            return redirect_to update_payment_path, alert: "Please add your card before subscribing"
+            return redirect_to update_payment_path, alert: "Veuillez ajouter votre carte avant de vous abonner"
         end
 
         plan = Stripe::Plan.retrieve(params[:plan_id])
         if !plan.id 
-            return redirect_to request.referrer, alert: "Invalid Plan"
+            return redirect_to request.referrer, alert: "Plan non valide"
         end
 
         subscription = Subsription.exists?(user_id: current_user.id)
         if subscription.present?
-            return redirect_to request.referrer, alert: "You cannot suscribe to another plan"
+            return redirect_to request.referrer, alert: "Vous ne pouvez pas souscrire à un autre plan"
         end
 
         # Create Stripe subscription
@@ -35,7 +35,7 @@ class SubscriptionsController < ApplicationController
             sub_id: stripe_sub.id
         )
 
-        return redirect_to dashboard_path, notive: "Subscribed successfully"
+        return redirect_to dashboard_path, notive: "Abonnement réussi"
     end
 
     def webhook

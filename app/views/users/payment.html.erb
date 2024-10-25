@@ -32,12 +32,12 @@
     <div class="container">
         <div class="columns is-centered">
             <div class="column is-8-tablet is-6-desktop is-6-widescreen">
-                <p class="title has-text-centered">Payment Method</p>
+                <p class="title has-text-centered">Mode de paiement</p>
 
                 <% if current_user.stripe_last_4 %>
                     <div class="card">
                         <div class="card-header-title is-centered">
-                            <%= "Your current card : **** **** **** #{current_user.stripe_last_4}" %>
+                            <%= "Votre carte actuelle : **** **** **** #{current_user.stripe_last_4}" %>
                         </div>
                     </div>
                 <% end %>
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="field is-grouped is-grouped-centered">
-                        <%= f.submit "#{current_user.stripe_id ? "Update Card" : "Add Card"}", class: "button is-primary m-t-20" %>
+                        <%= f.submit "#{current_user.stripe_id ? "Mettre à jour" : "Ajouter"}", class: "button is-primary m-t-20" %>
                     </div>
                 <% end %>
             </div>

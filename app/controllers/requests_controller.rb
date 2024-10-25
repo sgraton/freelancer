@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
   def create
     @request = current_user.requests.build(request_params)
     if @request.save
-      redirect_to requests_path, notice: "Saved..."
+      redirect_to requests_path, notice: "Sauvé..."
     else
       redirect_to request.referrer, flash: {error: @request.errors.full_messages.join(', ')}
     end
@@ -26,7 +26,7 @@ class RequestsController < ApplicationController
 
   def update
     if @request.update(request_params)
-      redirect_to requests_path, notice: "Saved..."
+      redirect_to requests_path, notice: "Sauvé..."
     else
       redirect_to request.referrer, flash: {error: @request.errors.full_messages.join(', ')}
     end
@@ -37,7 +37,7 @@ class RequestsController < ApplicationController
 
   def destroy
     @request.destroy
-    redirect_to requests_path, notice: "Removed..."
+    redirect_to requests_path, notice: "Supprimé..."
   end
 
   def list
@@ -69,7 +69,7 @@ class RequestsController < ApplicationController
   end
 
   def is_authorised
-    redirect_to root_path, alert: "You don't have permission" unless current_user.id == @request.user_id
+    redirect_to root_path, alert: "Vous n'avez pas l'autorisation" unless current_user.id == @request.user_id
   end
   
   def request_params

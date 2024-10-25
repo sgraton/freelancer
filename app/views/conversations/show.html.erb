@@ -4,7 +4,7 @@
         <div class="column is-4">
             <nav class="menu">
                 <p class="menu-label">
-                    All Conversations
+                    Toutes les conversations
                 </p>
                 <ul class="menu-list">
                     <% @conversations.each do |c| %>
@@ -52,8 +52,8 @@
                 <div class="media-content">
                     <div class="content">
                         <h3><%= @user.full_name %></h3>
-                        <small>From : <%= @user.from %></small>
-                        <small>Language : <%= @user.language %></small>
+                        <small>De : <%= @user.from %></small>
+                        <small>Langue : <%= @user.language %></small>
                     </div>
                 </div>
             </article>
@@ -76,7 +76,7 @@
                             <%= f.text_field :content, class: "input", placeholder: "Type a message..." %>
                         </div>
                         <div class="control">
-                            <%= f.submit "Send", class: "button is-primary" %>
+                            <%= f.submit "Envoyer", class: "button is-primary" %>
                         </div>
                     </div>
                 <% end %>

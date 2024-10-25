@@ -1,29 +1,29 @@
 <section class="section">
     <div class="container">
-        <p class="title">Earnings</p>
+        <p class="title">Revenus</p>
 
         <div class="card">
             <div class="card-content">
                 <div class="columns has-text-centered">
                     <div class="column">
-                        Net income
-                        <p class="is-size-4">$<%= @net_income %></p>
+                        Revenu net
+                        <p class="is-size-4">€<%= @net_income %></p>
                     </div>
                     <div class="column">
-                        Withdrawn
-                        <p class="is-size-4">$<%= @withdrawn %></p>
+                        Retiré
+                        <p class="is-size-4">€<%= @withdrawn %></p>
                     </div>
                     <div class="column">
-                        Used for Purchases
-                        <p class="is-size-4">$<%= @purchased %></p>
+                        Utilisé pour les achats
+                        <p class="is-size-4">€<%= @purchased %></p>
                     </div>
                     <div class="column">
-                        Pending Clearance
-                        <p class="is-size-4">$<%= @pending %></p>
+                        En attente d'autorisation
+                        <p class="is-size-4">€<%= @pending %></p>
                     </div>
                     <div class="column">
-                        Available for Withdrawal
-                        <p class="is-size-4">$<%= @withdrawable %></p>
+                        Disponible pour le retrait
+                        <p class="is-size-4">€<%= @withdrawable %></p>
                     </div>
                 </div>
             </div>
@@ -36,14 +36,14 @@
                     <div class="field is-grouped">
                         <div class="field is-horizontal" style="flex: 1;">
                             <div class="field-label is-normal">
-                                <label class="label">Withdraw Amount($)</label>
+                                <label class="label">Montant du retrait(€)</label>
                             </div>
                             <div class="field-body">
                                 <div class="field">
                                     <%= f.number_field :amount, value: 0, class: "input" %>
                                 </div>
                                 <div class="field">
-                                    <%= f.submit "Send Request", class: "button is-danger" %>
+                                    <%= f.submit "Envoyer une demande", class: "button is-danger" %>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
         <!-- Transaction List -->
         <div class="card m-t-20">
             <div class="card-header">
-                <div class="card-header-title">Transaction History</div>
+                <div class="card-header-title">Historique des transactions</div>
             </div>
             <div class="card-content">
                 <table class="table is-fullwidth">
@@ -64,8 +64,8 @@
                             <th>Date</th>
                             <th>Source</th>
                             <th>Type</th>
-                            <th>Status</th>
-                            <th>Amount</th>
+                            <th>Statut</th>
+                            <th>Montant</th>
                         </tr>
                     </thead>
                     
@@ -73,13 +73,13 @@
                         <% @transactions.each do |t| %>
                             <tr>
                                 <td><%= t.created_at.strftime('%d, %b %Y') %></td>
-                                <td><%= t.gig ? t.gig.title : "Withdraw Amount" %></td>
+                                <td><%= t.gig ? t.gig.title : "Montant du retrait" %></td>
                                 <td><%= t.transaction_type %></td>
                                 <td><span class="tag"><%= t.status %></span></td>
                                 <td>
                                     <span class="<%= current_user.id == t.buyer_id ? 'has-text-danger' : 'has-text-success' %>">
                                         <%= current_user.id == t.buyer_id ? '-' : '+' %>
-                                        $<%= current_user.id == t.buyer_id ? t.amount : (t.amount / 1.1).round(2) %>
+                                        €<%= current_user.id == t.buyer_id ? t.amount : (t.amount / 1.1).round(2) %>
                                     </span>
                                 </td>
                             </tr>
