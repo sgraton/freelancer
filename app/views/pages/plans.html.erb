@@ -1,7 +1,7 @@
 <section class="section">
     <div class="container">
         <p class="title is-4 m-t-50 m-b-50 has-text-centered">
-            Choose the best package for your business
+            Choisissez le meilleur forfait pour votre entreprise
         </p>
 
         <div class="pricing-table m-t-20 m-l-50 m-r-50">
@@ -14,18 +14,18 @@
                     <div class="plan-header"><%= plan.nickname %></div>
                     <div class="plan-price">
                         <span class="plan-price-amount">
-                            <span class="plan-price currency">$</span><%= plan.amount / 100 %>
-                        </span>/month
+                            <span class="plan-price currency">€</span><%= plan.amount / 100 %>
+                        </span>/ mois
                     </div>
                     <div class="plan-items">
                         <div class="plan-item">
-                            Commission fee is <%= plan.metadata.commission %>%
+                            La commission est de <%= plan.metadata.commission %>%
                         </div>
                     </div>
                     <div class="plan-footer">
                         <%= form_with url: subscribe_url do |f| %>
                             <%= f.hidden_field :plan_id, value: plan.id %>
-                            <%= f.submit "Choose", class: "button is-fullwidth" %>
+                            <%= f.submit "Choisir", class: "button is-fullwidth" %>
                         <% end %>
                     </div>
                 </div>

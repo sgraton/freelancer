@@ -1,17 +1,8 @@
 
-<nav class="navbar is-danger" role="navigation" aria-label="main navigation">
-    <h2 class=" has-text-white">
-            &nbsp;<b>Site de démonstration</b><br/> &nbsp;Les données présentées sur ce site sont entièrement fictives.
-            </h1>
-    <%# <div class="container">
-        
-    </div> %>
-</nav>
-
 <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
-            <h1 class="title is-4">Freelancer</h1>
+            <h1 class="title is-4">Accueil</h1>
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -30,25 +21,25 @@
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-search"></i>
                                 </span>
-                                <%= text_field_tag 'q', '', class: "input", placeholder: "Try 'logo design'" %>
+                                <%= text_field_tag 'q', '', class: "input", placeholder: "Essayer 'design logo'" %>
                             </div>
                             <div class="control">
-                                <button class="button is-danger" type="submit">Search</button>
+                                <button class="button is-danger" type="submit">Rechercher</button>
                             </div>
                         </div>
                     <% end %>
                 </div>
             </div>
             <div class="navbar-end">
-                <%= link_to "Pricing", plans_path, class: "navbar-item" %>
-                <%= link_to "Post Gig", new_gig_path, class: "navbar-item" %>
-                <%= link_to "Browse Gig", search_path, class: "navbar-item" %>
+                <%= link_to "Tarifs", plans_path, class: "navbar-item" %>
+                <%= link_to "Poster un service", new_gig_path, class: "navbar-item" %>
+                <%= link_to "Parcourir les services", search_path, class: "navbar-item" %>
 
                 <% if (!user_signed_in?) %>
                     <div class="navbar-item">
                         <div class="buttons">
-                            <%= link_to 'Sign Up', new_user_registration_path, class: "button is-primary" %>
-                            <%= link_to 'Log In', new_user_session_path, class: "button is-light" %>
+                            <%= link_to 'S\'inscrire', new_user_registration_path, class: "button is-primary" %>
+                            <%= link_to 'Se connecter', new_user_session_path, class: "button is-light" %>
                         </div>
                     </div>
                 <% else %>
