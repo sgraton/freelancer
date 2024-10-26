@@ -121,7 +121,9 @@ class UsersController < ApplicationController
     @subscription = Subsription.find_by_user_id(current_user.id)
 
     if @subscription.present? && @subscription.sub_id
-      Stripe::Subscription.delete(@subscription.sub_id)
+      Stripe::Subscription.cancel(@subscription.sub_id)
+      # Supprimer l'abonnement local
+      Subsription.destroy(@subscription.id)
       return redirect_to request.referrer, notice: "Votre abonnement est annulé"
     end
     return redirect_to request.referrer, alert: "Impossible d'annuler votre abonnement"

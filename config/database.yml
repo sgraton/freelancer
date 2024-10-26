@@ -23,7 +23,8 @@ default: &default
 
 development:
   <<: *default
-  database: freelancer_development
+  url: postgresql://freelancer_muddy_hill_1384:BTIJYsT73czX9X0@localhost:6543
+  database: freelancer_muddy_hill_1384
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

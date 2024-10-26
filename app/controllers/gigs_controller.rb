@@ -3,7 +3,7 @@ class GigsController < ApplicationController
   protect_from_forgery except: [:upload_photo]
   before_action :authenticate_user!, except: [:show]
   before_action :set_gig, except: [:new, :create]
-  before_action :is_authorized, only: [:edit, :update, :upload_photo, :delete_photo]
+  before_action :is_authorized, only: [:edit, :update, :upload_photo, :delete_photo, :delete]
   before_action :set_step, only: [:edit, :update]
 
   def new
@@ -24,7 +24,6 @@ class GigsController < ApplicationController
 
   def edit
     @categories = Category.where(active: true)
-    
   end
 
   def update
@@ -114,6 +113,12 @@ class GigsController < ApplicationController
     else
       redirect_to settings_payment_path, alert: "Veuillez d'abord ajouter votre carte"
     end
+  end
+
+  def deactivate
+    @gig.update(active: false)
+
+    redirect_to dashboard_path, notice: "Désactivé."
   end
 
   private

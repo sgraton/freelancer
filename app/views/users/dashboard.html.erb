@@ -185,11 +185,9 @@
                             <div class="card">
 
                                 <div class="card-image">
-                                    <%= link_to edit_gig_path(gig) do %>
-                                        <figure class="image is-4by3">
-                                            <%= image_tag gig_cover(gig) %>
-                                        </figure>
-                                    <% end %>
+                                    <figure class="image is-4by3">
+                                        <%= image_tag gig_cover(gig) %>
+                                    </figure>
                                 </div>
 
                                 <div class="card-content p-t-5 p-b-5">
@@ -197,7 +195,21 @@
                                     <span class="star-review"><i class="fa fa-star"></i>
                                         <%= gig.average_rating %> 
                                         <span class="has-text-primary">(<%= gig.reviews.count %>)</span>
-                                    </span>                                        
+                                    </span>    
+                                    <br/>
+                                    <!-- Edition & désactivation -->                                 
+                                    <div>
+                                        <a href="<%= edit_gig_path(gig) %>" class="button is-light is-small">Éditer</a>
+
+                                        <!-- Si le gig est activé -->
+                                        <% if gig.active? %>
+                                            <!-- Désactiver -->
+                                            <%= link_to deactivate_gig_path(gig), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: "button is-danger is-small" do %>
+                                                Désactiver
+                                            <% end %>
+                                        <% end %>
+                                        
+                                    </div>
                                 </div>
 
                                 <footer class="card-footer">
