@@ -34,7 +34,7 @@ class GigsController < ApplicationController
           next;
         else
           if pricing[:title].blank? || pricing[:description].blank? || pricing[:delivery_time].blank? || pricing[:price].blank? 
-            return redirect_to request.referrer, flash: {error: "Tous les chemps n'ont pas été renseignés."}
+            return redirect_to request.referrer, flash: {error: "Tous les champs n'ont pas été renseignés."}
           end
         end
       end
